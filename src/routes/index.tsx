@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRACTICE, CASES, FAQS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site-data";
+import danielHome from "@/assets/daniel-home.jpg.asset.json";
 
 const FAQ_JSONLD = {
   "@context": "https://schema.org",
