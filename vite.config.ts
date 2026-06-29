@@ -40,10 +40,11 @@ const STATIC_PAGES = [
 export default defineConfig({
   tanstackStart: isGhPages
     ? ({
+        server: { entry: "server" },
         spa: { enabled: true },
         prerender: { enabled: true, crawlLinks: true, failOnError: false },
         pages: STATIC_PAGES,
-        sitemap: { enabled: true },
+        sitemap: { enabled: true, host: process.env.SITE_URL || "https://example.com" },
       } as never)
     : {
         // Redirect TanStack Start's bundled server entry to src/server.ts
