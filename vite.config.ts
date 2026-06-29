@@ -37,7 +37,20 @@ const STATIC_PAGES = [
   ...PRACTICE_SLUGS.map((s) => ({ path: `/practice-areas/${s}` })),
 ];
 
+// For GitHub Pages project sites (served under /<repo>/), set BASE_PATH so
+// asset URLs resolve under the subpath. Workflow derives it from
+// GITHUB_REPOSITORY. Must start and end with "/".
+function normalizeBase(raw: string | undefined): string {
+  if (!raw || raw === "/" || raw === "") return "/";
+  let b = raw.trim();
+  if (!b.startsWith("/")) b = "/" + b;
+  if (!b.endsWith("/")) b = b + "/";
+  return b;
+}
+const basePath = isGhPages ? normalizeBase(process.env.BASE_PATH) : "/";
+
 export default defineConfig({
+  vite: { base: basePath },
   tanstackStart: isGhPages
     ? ({
         server: { entry: "server" },
