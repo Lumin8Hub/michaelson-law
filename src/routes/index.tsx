@@ -60,11 +60,8 @@ function HomePage() {
               </div>
             </div>
             <div>
-              <figure className="plate" role="img" aria-label="Portrait of Daniel Michaelson — placeholder to be replaced">
-                <div className="ph">
-                  <PortraitIcon />
-                  <div>PORTRAIT<br />TO BE REPLACED</div>
-                </div>
+              <figure className="plate">
+                <img src={danielHome.url} alt="Daniel Michaelson, founder of DM Counsel — Toronto personal injury and medical malpractice lawyer" loading="eager" />
               </figure>
               <div className="plate-cap">Plate 01 — <b>Daniel Michaelson</b>, Toronto</div>
             </div>
