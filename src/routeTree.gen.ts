@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as PracticeAreasRouteImport } from './routes/practice-areas'
 import { Route as InsightsRouteImport } from './routes/insights'
@@ -19,11 +18,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas.index'
 import { Route as PracticeAreasSlugRouteImport } from './routes/practice-areas.$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
@@ -72,7 +66,6 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/practice-areas': typeof PracticeAreasRouteWithChildren
   '/results': typeof ResultsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
@@ -82,7 +75,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
   '/results': typeof ResultsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas': typeof PracticeAreasIndexRoute
 }
@@ -94,7 +86,6 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/practice-areas': typeof PracticeAreasRouteWithChildren
   '/results': typeof ResultsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
@@ -107,7 +98,6 @@ export interface FileRouteTypes {
     | '/insights'
     | '/practice-areas'
     | '/results'
-    | '/sitemap.xml'
     | '/practice-areas/$slug'
     | '/practice-areas/'
   fileRoutesByTo: FileRoutesByTo
@@ -117,7 +107,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/insights'
     | '/results'
-    | '/sitemap.xml'
     | '/practice-areas/$slug'
     | '/practice-areas'
   id:
@@ -128,7 +117,6 @@ export interface FileRouteTypes {
     | '/insights'
     | '/practice-areas'
     | '/results'
-    | '/sitemap.xml'
     | '/practice-areas/$slug'
     | '/practice-areas/'
   fileRoutesById: FileRoutesById
@@ -140,18 +128,10 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   PracticeAreasRoute: typeof PracticeAreasRouteWithChildren
   ResultsRoute: typeof ResultsRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/results': {
       id: '/results'
       path: '/results'
@@ -232,7 +212,6 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   PracticeAreasRoute: PracticeAreasRouteWithChildren,
   ResultsRoute: ResultsRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
