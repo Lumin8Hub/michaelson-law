@@ -27,11 +27,17 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build static site (Nitro github_pages preset)
+      - name: Build static site (TanStack Start prerender)
         run: bun run build
         env:
           GH_PAGES: "1"
-          NITRO_PRESET: github_pages
+          # Optional: set SITE_URL in repo Variables to populate sitemap absolute URLs.
+          SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Add GitHub Pages SPA fallback + .nojekyll
+        run: |
+          cp dist/client/index.html dist/client/404.html
+          touch dist/client/.nojekyll
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -39,8 +45,7 @@ jobs:
       - name: Upload static artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Nitro's github_pages preset emits the static site to .output/public
-          path: .output/public
+          path: dist/client
 
   deploy:
     needs: build
