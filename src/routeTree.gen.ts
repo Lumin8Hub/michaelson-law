@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as PracticeAreasRouteImport } from './routes/practice-areas'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas.index'
 import { Route as PracticeAreasSlugRouteImport } from './routes/practice-areas.$slug'
 
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PracticeAreasRoute = PracticeAreasRouteImport.update({
   id: '/practice-areas',
   path: '/practice-areas',
@@ -45,12 +51,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/practice-areas': typeof PracticeAreasRouteWithChildren
+  '/results': typeof ResultsRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/results': typeof ResultsRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas': typeof PracticeAreasIndexRoute
 }
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/practice-areas': typeof PracticeAreasRouteWithChildren
+  '/results': typeof ResultsRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
@@ -68,15 +77,17 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/practice-areas'
+    | '/results'
     | '/practice-areas/$slug'
     | '/practice-areas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/practice-areas/$slug' | '/practice-areas'
+  to: '/' | '/about' | '/results' | '/practice-areas/$slug' | '/practice-areas'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/practice-areas'
+    | '/results'
     | '/practice-areas/$slug'
     | '/practice-areas/'
   fileRoutesById: FileRoutesById
@@ -85,10 +96,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   PracticeAreasRoute: typeof PracticeAreasRouteWithChildren
+  ResultsRoute: typeof ResultsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/practice-areas': {
       id: '/practice-areas'
       path: '/practice-areas'
@@ -145,6 +164,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   PracticeAreasRoute: PracticeAreasRouteWithChildren,
+  ResultsRoute: ResultsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
