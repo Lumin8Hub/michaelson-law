@@ -25,8 +25,8 @@ function AboutPage() {
           <p className="crumb"><Link to="/">Home</Link><span className="sep">/</span>About Daniel</p>
           <div className="about-grid" style={{ marginTop: "2rem" }}>
             <div>
-              <figure className="portrait" role="img" aria-label="Portrait of Daniel Michaelson — placeholder">
-                <div className="ph"><PortraitIcon /><div>HEADSHOT<br />TO BE REPLACED</div></div>
+              <figure className="portrait">
+                <img src={danielAbout.url} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
               </figure>
               <div className="cred-grid">
                 <div className="cred"><div className="l">Called to the bar</div><div className="d">Ontario, 2008</div></div>
