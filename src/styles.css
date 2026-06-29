@@ -201,6 +201,7 @@ header.site {
 .plate::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 .plate .ph { text-align: center; color: rgba(252, 250, 246, 0.5); font-family: "Spline Sans Mono", monospace; font-size: 0.7rem; letter-spacing: 0.14em; line-height: 1.9; padding: 1rem; }
 .plate .ph svg { width: 42px; height: 42px; opacity: 0.5; margin-bottom: 0.6rem; }
+.plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
 .plate-cap { margin-top: 0.9rem; font-family: "Spline Sans Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: rgba(252, 250, 246, 0.55); text-transform: uppercase; }
 .plate-cap b { color: var(--gold); font-weight: 500; }
 
@@ -281,6 +282,7 @@ header.site {
 .portrait::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 .portrait .ph { text-align: center; color: rgba(252, 250, 246, 0.5); font-family: "Spline Sans Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; line-height: 1.9; }
 .portrait .ph svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 0.5rem; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
 .prose { max-width: 68ch; }
 .prose p { max-width: none; color: var(--slate); margin-bottom: 1.15rem; font-size: 1.075rem; }
 .prose h3 { margin: 2.6rem 0 1rem; }

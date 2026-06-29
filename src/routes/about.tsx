@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import danielAbout from "@/assets/daniel-about.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -8,18 +9,13 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Daniel Michaelson — DM Counsel" },
       { property: "og:description", content: "Senior personal-injury and medical-malpractice advocate based in Toronto, acting across Ontario including northern and Indigenous communities." },
       { property: "og:url", content: "/about" },
+      { property: "og:image", content: danielAbout.url },
+      { name: "twitter:image", content: danielAbout.url },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
-
-const PortraitIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="8" r="4" />
-    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-  </svg>
-);
 
 function AboutPage() {
   return (
@@ -29,8 +25,8 @@ function AboutPage() {
           <p className="crumb"><Link to="/">Home</Link><span className="sep">/</span>About Daniel</p>
           <div className="about-grid" style={{ marginTop: "2rem" }}>
             <div>
-              <figure className="portrait" role="img" aria-label="Portrait of Daniel Michaelson — placeholder">
-                <div className="ph"><PortraitIcon /><div>HEADSHOT<br />TO BE REPLACED</div></div>
+              <figure className="portrait">
+                <img src={danielAbout.url} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
               </figure>
               <div className="cred-grid">
                 <div className="cred"><div className="l">Called to the bar</div><div className="d">Ontario, 2008</div></div>

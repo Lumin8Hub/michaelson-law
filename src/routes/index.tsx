@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRACTICE, CASES, FAQS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site-data";
+import danielHome from "@/assets/daniel-home.jpg.asset.json";
 
 const FAQ_JSONLD = {
   "@context": "https://schema.org",
@@ -11,12 +12,6 @@ const FAQ_JSONLD = {
   })),
 };
 
-const PortraitIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="8" r="4" />
-    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-  </svg>
-);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,11 +54,8 @@ function HomePage() {
               </div>
             </div>
             <div>
-              <figure className="plate" role="img" aria-label="Portrait of Daniel Michaelson — placeholder to be replaced">
-                <div className="ph">
-                  <PortraitIcon />
-                  <div>PORTRAIT<br />TO BE REPLACED</div>
-                </div>
+              <figure className="plate">
+                <img src={danielHome.url} alt="Daniel Michaelson, founder of DM Counsel — Toronto personal injury and medical malpractice lawyer" loading="eager" />
               </figure>
               <div className="plate-cap">Plate 01 — <b>Daniel Michaelson</b>, Toronto</div>
             </div>
