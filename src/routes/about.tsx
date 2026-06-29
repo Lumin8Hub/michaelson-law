@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import danielAbout from "@/assets/daniel-about.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -8,18 +9,13 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Daniel Michaelson — DM Counsel" },
       { property: "og:description", content: "Senior personal-injury and medical-malpractice advocate based in Toronto, acting across Ontario including northern and Indigenous communities." },
       { property: "og:url", content: "/about" },
+      { property: "og:image", content: danielAbout.url },
+      { name: "twitter:image", content: danielAbout.url },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
-
-const PortraitIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="8" r="4" />
-    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-  </svg>
-);
 
 function AboutPage() {
   return (
