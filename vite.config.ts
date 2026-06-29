@@ -41,7 +41,6 @@ export default defineConfig({
   tanstackStart: isGhPages
     ? ({
         server: { entry: "server" },
-        spa: { enabled: true },
         prerender: { enabled: true, crawlLinks: true, failOnError: false },
         pages: STATIC_PAGES,
         sitemap: {
