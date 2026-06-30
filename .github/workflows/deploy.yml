@@ -31,11 +31,15 @@ jobs:
         run: bun run build
         env:
           GH_PAGES: "1"
+          VITE_GH_PAGES: "1"
           # Project pages are served at https://<user>.github.io/<repo>/, so
           # assets must be loaded from that subpath. Derive from the repo name.
           BASE_PATH: "/${{ github.event.repository.name }}/"
           # Optional: set SITE_URL in repo Variables to populate sitemap absolute URLs.
           SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Download Lovable Assets into static output
+        run: node scripts/download-assets.mjs
 
       - name: Add GitHub Pages SPA fallback + .nojekyll
         run: |

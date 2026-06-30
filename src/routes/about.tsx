@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import danielAbout from "@/assets/daniel-about.jpg.asset.json";
+import { assetUrl } from "@/lib/asset-url";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -9,8 +10,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Daniel Michaelson — DM Counsel" },
       { property: "og:description", content: "Senior personal-injury and medical-malpractice advocate based in Toronto, acting across Ontario including northern and Indigenous communities." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: danielAbout.url },
-      { name: "twitter:image", content: danielAbout.url },
+      { property: "og:image", content: assetUrl(danielAbout) },
+      { name: "twitter:image", content: assetUrl(danielAbout) },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
@@ -26,7 +27,7 @@ function AboutPage() {
           <div className="about-grid" style={{ marginTop: "2rem" }}>
             <div>
               <figure className="portrait">
-                <img src={danielAbout.url} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
+                <img src={assetUrl(danielAbout)} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
               </figure>
               <div className="cred-grid">
                 <div className="cred"><div className="l">Called to the bar</div><div className="d">Ontario, 2008</div></div>
