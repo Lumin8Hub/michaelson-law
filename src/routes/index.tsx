@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PRACTICE, CASES, FAQS, PHONE_DISPLAY, PHONE_TEL } from "@/lib/site-data";
 import danielHome from "@/assets/daniel-home.jpg.asset.json";
+import { assetUrl } from "@/lib/asset-url";
 
 const FAQ_JSONLD = {
   "@context": "https://schema.org",
@@ -55,7 +56,7 @@ function HomePage() {
             </div>
             <div>
               <figure className="plate">
-                <img src={danielHome.url} alt="Daniel Michaelson, founder of DM Counsel — Toronto personal injury and medical malpractice lawyer" loading="eager" />
+                <img src={assetUrl(danielHome)} alt="Daniel Michaelson, founder of DM Counsel — Toronto personal injury and medical malpractice lawyer" loading="eager" />
               </figure>
               <div className="plate-cap">Plate 01 — <b>Daniel Michaelson</b>, Toronto</div>
             </div>

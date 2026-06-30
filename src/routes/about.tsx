@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import danielAbout from "@/assets/daniel-about.jpg.asset.json";
+import { assetUrl } from "@/lib/asset-url";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -9,8 +10,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Daniel Michaelson — DM Counsel" },
       { property: "og:description", content: "Senior personal-injury and medical-malpractice advocate based in Toronto, acting across Ontario including northern and Indigenous communities." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: danielAbout.url },
-      { name: "twitter:image", content: danielAbout.url },
+      { property: "og:image", content: assetUrl(danielAbout) },
+      { name: "twitter:image", content: assetUrl(danielAbout) },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
