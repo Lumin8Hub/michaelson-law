@@ -27,7 +27,7 @@ function AboutPage() {
           <div className="about-grid" style={{ marginTop: "2rem" }}>
             <div>
               <figure className="portrait">
-                <img src={danielAbout.url} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
+                <img src={assetUrl(danielAbout)} alt="Daniel Michaelson — Toronto personal injury and medical malpractice lawyer" />
               </figure>
               <div className="cred-grid">
                 <div className="cred"><div className="l">Called to the bar</div><div className="d">Ontario, 2008</div></div>
